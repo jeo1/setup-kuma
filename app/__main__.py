@@ -1,6 +1,6 @@
 import os
 import argparse
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from uptime_kuma_api import UptimeKumaApi, MonitorType, DockerType
 
 
@@ -36,17 +36,21 @@ def create_args():
         type=str,
     )
 
+    parser.add_argument("--kuma_url")
+    parser.add_argument("--kuma_username")
+    parser.add_argument("--kuma_password")
+
     args = parser.parse_args()
 
     return args
 
 
-if os.path.isfile(".env"):
-    load_dotenv()
-
-kuma_url = os.getenv("KUMA_URL")
-kuma_username = os.getenv("KUMA_USERNAME")
-kuma_password = os.getenv("KUMA_PASSWORD")
+#if os.path.isfile(".env"):
+#    load_dotenv()
+#
+#kuma_url = os.getenv("KUMA_URL")
+#kuma_username = os.getenv("KUMA_USERNAME")
+#kuma_password = os.getenv("KUMA_PASSWORD")
 
 
 def _add_monitor_ping(api, name, hostname):
@@ -136,8 +140,8 @@ def add_monitor(
 if __name__ == "__main__":
     args = create_args()
 
-    with UptimeKumaApi(kuma_url) as api:
-        api.login(kuma_username, kuma_password)
+    with UptimeKumaApi(args.kuma_url) as api:
+        api.login(args.kuma_username, args.kuma_password)
         add_monitor(
             api,
             args.monitor_type_str,
