@@ -8,6 +8,7 @@ if __name__ == "__main__":
     container_name_list = []
     if args.yaml_file != None:
         container_name_list = process_yml(args.yaml_file)
+    container_name_list += args.other_container_names
 
     with UptimeKumaApi(args.kuma_url) as api:
         if len(container_name_list) == 0:

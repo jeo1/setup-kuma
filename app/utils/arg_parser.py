@@ -41,6 +41,10 @@ def create_args():
         help="var_docker_deploy.yml yaml file, which used to get docker container names.",
     )
 
+    parser.add_argument(
+        "--other_container_names", nargs="+", default=[], help="List of container names"
+    )
+
     parser.add_argument("--kuma_url")
     parser.add_argument("--kuma_username")
     parser.add_argument("--kuma_password")
