@@ -5,6 +5,10 @@ from utils import create_args, add_monitor
 if __name__ == "__main__":
     args = create_args()
 
+    if args.yaml_file != None:
+        pass
+
+    """
     with UptimeKumaApi(args.kuma_url) as api:
         api.login(args.kuma_username, args.kuma_password)
         add_monitor(
@@ -15,3 +19,4 @@ if __name__ == "__main__":
             url=args.url,
             docker_container_name=args.docker_container_name,
         )
+    """

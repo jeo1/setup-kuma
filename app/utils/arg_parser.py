@@ -33,6 +33,14 @@ def create_args():
         type=str,
     )
 
+    parser.add_argument(
+        "-y",
+        "--yaml_file",
+        default=None,
+        type=str,
+        help="var_docker_deploy.yml yaml file, which used to get docker container names.",
+    )
+
     parser.add_argument("--kuma_url")
     parser.add_argument("--kuma_username")
     parser.add_argument("--kuma_password")
